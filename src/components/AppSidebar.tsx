@@ -10,6 +10,7 @@ import {
   Plane,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
+import gmrAeroLogo from "@/assets/gmr-aero-logo.png";
 import { useLocation } from "react-router-dom";
 import {
   Sidebar,
@@ -45,9 +46,7 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <div className="flex items-center gap-3 px-4 py-5 border-b border-sidebar-border">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-sidebar-primary">
-          <Plane className="h-5 w-5 text-sidebar-primary-foreground" />
-        </div>
+        <img src={gmrAeroLogo} alt="GMR Aero" className="h-8 w-auto object-contain" />
         {!collapsed && (
           <div className="flex flex-col">
             <span className="text-sm font-semibold text-sidebar-primary-foreground">MRO Track</span>
