@@ -180,6 +180,56 @@ export default function LiveTracking() {
                   </g>
                 ))}
 
+                {/* Aircraft silhouettes in Hangar */}
+                {/* Aircraft 1 - Bay A area */}
+                <g transform="translate(18, 28)" opacity={0.1}>
+                  <g transform="scale(0.12)">
+                    {/* Fuselage */}
+                    <ellipse cx="0" cy="0" rx="60" ry="8" fill="hsl(var(--foreground))" />
+                    {/* Nose */}
+                    <path d="M-60,0 Q-75,-2 -75,0 Q-75,2 -60,0" fill="hsl(var(--foreground))" />
+                    {/* Wings */}
+                    <path d="M-5,-8 L15,-45 L25,-45 L10,-8" fill="hsl(var(--foreground))" />
+                    <path d="M-5,8 L15,45 L25,45 L10,8" fill="hsl(var(--foreground))" />
+                    {/* Tail */}
+                    <path d="M50,-8 L60,-22 L65,-22 L58,-8" fill="hsl(var(--foreground))" />
+                    <path d="M50,8 L60,22 L65,22 L58,8" fill="hsl(var(--foreground))" />
+                    {/* Vertical stabilizer */}
+                    <path d="M55,-8 L62,-18 L65,-15 L60,-8" fill="hsl(var(--foreground))" />
+                    {/* Engines */}
+                    <ellipse cx="5" cy="-20" rx="8" ry="3" fill="hsl(var(--foreground))" />
+                    <ellipse cx="5" cy="20" rx="8" ry="3" fill="hsl(var(--foreground))" />
+                  </g>
+                </g>
+
+                {/* Aircraft 2 - Bay B area */}
+                <g transform="translate(42, 35)" opacity={0.08}>
+                  <g transform="scale(0.1) rotate(-10)">
+                    <ellipse cx="0" cy="0" rx="55" ry="7" fill="hsl(var(--foreground))" />
+                    <path d="M-55,0 Q-68,-2 -68,0 Q-68,2 -55,0" fill="hsl(var(--foreground))" />
+                    <path d="M-5,-7 L12,-40 L22,-40 L8,-7" fill="hsl(var(--foreground))" />
+                    <path d="M-5,7 L12,40 L22,40 L8,7" fill="hsl(var(--foreground))" />
+                    <path d="M45,-7 L55,-20 L60,-20 L52,-7" fill="hsl(var(--foreground))" />
+                    <path d="M45,7 L55,20 L60,20 L52,7" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="-18" rx="7" ry="2.5" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="18" rx="7" ry="2.5" fill="hsl(var(--foreground))" />
+                  </g>
+                </g>
+
+                {/* Aircraft 3 - Avionics Bay C (smaller aircraft) */}
+                <g transform="translate(20, 82)" opacity={0.09}>
+                  <g transform="scale(0.08) rotate(5)">
+                    <ellipse cx="0" cy="0" rx="48" ry="6" fill="hsl(var(--foreground))" />
+                    <path d="M-48,0 Q-58,-1.5 -58,0 Q-58,1.5 -48,0" fill="hsl(var(--foreground))" />
+                    <path d="M-3,-6 L10,-32 L18,-32 L8,-6" fill="hsl(var(--foreground))" />
+                    <path d="M-3,6 L10,32 L18,32 L8,6" fill="hsl(var(--foreground))" />
+                    <path d="M40,-6 L48,-16 L52,-16 L46,-6" fill="hsl(var(--foreground))" />
+                    <path d="M40,6 L48,16 L52,16 L46,6" fill="hsl(var(--foreground))" />
+                    <ellipse cx="2" cy="-14" rx="6" ry="2" fill="hsl(var(--foreground))" />
+                    <ellipse cx="2" cy="14" rx="6" ry="2" fill="hsl(var(--foreground))" />
+                  </g>
+                </g>
+
                 {/* Technician dots */}
                 {techDots.map((dot, i) => {
                   const isSelected = selectedTech?.tech.id === dot.tech.id;
