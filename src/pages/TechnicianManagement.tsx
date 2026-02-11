@@ -96,7 +96,7 @@ export default function TechnicianManagement() {
                 <th>Shift</th>
                 <th>Skill</th>
                 <th>Aircraft</th>
-                <th>Certification</th>
+                <th>Validity</th>
                 <th>Status</th>
               </tr>
             </thead>
