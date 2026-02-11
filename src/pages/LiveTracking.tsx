@@ -3,6 +3,7 @@ import { Layout } from "@/components/Layout";
 import { zones, technicians } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";
 import { Users, Wifi, WifiOff, X, Clock, MapPin, IdCard } from "lucide-react";
+import aircraftImg from "@/assets/aircraft-topdown.png";
 
 type TechnicianDot = {
   tech: typeof technicians[0];
@@ -180,66 +181,24 @@ export default function LiveTracking() {
                   </g>
                 ))}
 
-                {/* 3D Aircraft silhouette - animated, vertical, centered in hangar */}
-                <g transform="translate(32.5, 33)">
-                  {/* Gentle hover animation */}
-                  <animateTransform attributeName="transform" type="translate" values="32.5,33; 32.5,31.5; 32.5,33" dur="3s" repeatCount="indefinite" />
-                  <g opacity={0.13}>
-                    <animate attributeName="opacity" values="0.13;0.18;0.13" dur="3s" repeatCount="indefinite" />
-                    <g transform="scale(0.18) rotate(-90)">
-                      {/* Shadow / 3D depth layer - pulses with hover */}
-                      <g opacity={0.3}>
-                        <animate attributeName="opacity" values="0.3;0.15;0.3" dur="3s" repeatCount="indefinite" />
-                        <g>
-                          <animateTransform attributeName="transform" type="translate" values="1.5,2; 2.5,4; 1.5,2" dur="3s" repeatCount="indefinite" />
-                          <ellipse cx="0" cy="0" rx="62" ry="9" fill="hsl(var(--foreground))" />
-                          <path d="M-62,0 Q-78,-2.5 -78,0 Q-78,2.5 -62,0" fill="hsl(var(--foreground))" />
-                          <path d="M-5,-9 L16,-50 L27,-50 L11,-9" fill="hsl(var(--foreground))" />
-                          <path d="M-5,9 L16,50 L27,50 L11,9" fill="hsl(var(--foreground))" />
-                          <path d="M52,-9 L63,-24 L68,-24 L60,-9" fill="hsl(var(--foreground))" />
-                          <path d="M52,9 L63,24 L68,24 L60,9" fill="hsl(var(--foreground))" />
-                        </g>
-                      </g>
-                      {/* Main body */}
-                      <ellipse cx="0" cy="0" rx="62" ry="9" fill="hsl(var(--foreground))" />
-                      {/* Nose cone */}
-                      <path d="M-62,0 Q-78,-2.5 -78,0 Q-78,2.5 -62,0" fill="hsl(var(--foreground))" />
-                      {/* Wings - subtle tilt animation */}
-                      <g>
-                        <animateTransform attributeName="transform" type="rotate" values="0;1;0;-1;0" dur="4s" repeatCount="indefinite" />
-                        <path d="M-5,-9 L16,-50 L27,-50 L11,-9" fill="hsl(var(--foreground))" />
-                        <path d="M-5,9 L16,50 L27,50 L11,9" fill="hsl(var(--foreground))" />
-                      </g>
-                      {/* Tail fins */}
-                      <path d="M52,-9 L63,-24 L68,-24 L60,-9" fill="hsl(var(--foreground))" />
-                      <path d="M52,9 L63,24 L68,24 L60,9" fill="hsl(var(--foreground))" />
-                      {/* Vertical stabilizer */}
-                      <path d="M56,-9 L65,-22 L68,-18 L62,-9" fill="hsl(var(--foreground))" />
-                      {/* Engines - glow pulse */}
-                      <ellipse cx="6" cy="-22" rx="9" ry="3.5" fill="hsl(var(--foreground))">
-                        <animate attributeName="ry" values="3.5;4;3.5" dur="1.5s" repeatCount="indefinite" />
-                      </ellipse>
-                      <ellipse cx="6" cy="22" rx="9" ry="3.5" fill="hsl(var(--foreground))">
-                        <animate attributeName="ry" values="3.5;4;3.5" dur="1.5s" repeatCount="indefinite" />
-                      </ellipse>
-                      {/* Engine exhaust glow */}
-                      <ellipse cx="16" cy="-22" rx="5" ry="2" fill="hsl(var(--primary))" opacity={0}>
-                        <animate attributeName="opacity" values="0;0.15;0" dur="1.5s" repeatCount="indefinite" />
-                        <animate attributeName="rx" values="5;8;5" dur="1.5s" repeatCount="indefinite" />
-                      </ellipse>
-                      <ellipse cx="16" cy="22" rx="5" ry="2" fill="hsl(var(--primary))" opacity={0}>
-                        <animate attributeName="opacity" values="0;0.15;0" dur="1.5s" repeatCount="indefinite" />
-                        <animate attributeName="rx" values="5;8;5" dur="1.5s" repeatCount="indefinite" />
-                      </ellipse>
-                      {/* Cockpit windshield highlight */}
-                      <ellipse cx="-58" cy="0" rx="6" ry="3" fill="hsl(var(--foreground))" opacity={0.5}>
-                        <animate attributeName="opacity" values="0.5;0.7;0.5" dur="2s" repeatCount="indefinite" />
-                      </ellipse>
-                      {/* Wing detail lines */}
-                      <line x1="0" y1="-12" x2="18" y2="-42" stroke="hsl(var(--background))" strokeWidth="0.8" opacity={0.3} />
-                      <line x1="0" y1="12" x2="18" y2="42" stroke="hsl(var(--background))" strokeWidth="0.8" opacity={0.3} />
-                    </g>
-                  </g>
+                {/* Real aircraft image - animated, vertical, centered in hangar */}
+                <g>
+                  <animateTransform attributeName="transform" type="translate" values="0,0; 0,-1.5; 0,0" dur="3s" repeatCount="indefinite" />
+                  {/* Shadow */}
+                  <ellipse cx="32.5" cy="42" rx="8" ry="1.5" fill="hsl(var(--foreground))" opacity={0.08}>
+                    <animate attributeName="opacity" values="0.08;0.04;0.08" dur="3s" repeatCount="indefinite" />
+                    <animate attributeName="ry" values="1.5;2;1.5" dur="3s" repeatCount="indefinite" />
+                  </ellipse>
+                  {/* Aircraft image */}
+                  <image
+                    href={aircraftImg}
+                    x={32.5 - 8}
+                    y={33 - 12}
+                    width={16}
+                    height={24}
+                    opacity={0.85}
+                    style={{ filter: "drop-shadow(0.3px 0.5px 0.5px rgba(0,0,0,0.3))" }}
+                  />
                 </g>
 
                 {/* Technician dots */}
