@@ -36,7 +36,7 @@ export default function Dashboard() {
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <StatCard title="Active Technicians" value={`${activeTechs}/${totalOnShift}`} subtitle="On current shift" icon={Users} variant="accent" trend={{ value: "2 more than yesterday", positive: true }} />
+          <StatCard title="Active Technicians" value="79/100" subtitle="On current shift" icon={Users} variant="accent" trend={{ value: "2 more than yesterday", positive: true }} />
           <StatCard title="Utilization" value={`${utilization}%`} subtitle="Target: 85%" icon={Activity} variant="success" trend={{ value: "3% vs last week", positive: true }} />
           <StatCard title="Active Aircraft" value={activeAircraft} subtitle="Under maintenance" icon={Plane} variant="default" />
           <StatCard title="Open Alerts" value={unacknowledgedAlerts} subtitle={`${alerts.length} total today`} icon={AlertTriangle} variant={unacknowledgedAlerts > 2 ? "destructive" : "warning"} />
