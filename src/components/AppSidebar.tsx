@@ -45,13 +45,10 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <div className="flex items-center gap-3 px-4 py-5 border-b border-sidebar-border">
+      <div className="flex flex-col items-center px-4 py-5 border-b border-sidebar-border gap-1">
         <img src={gmrAeroLogo} alt="GMR Aero" className="h-8 w-auto object-contain" />
         {!collapsed && (
-          <div className="flex flex-col">
-            <span className="text-sm font-semibold text-sidebar-primary-foreground">MRO Track</span>
-            <span className="text-[10px] text-sidebar-foreground/60 uppercase tracking-widest">Hangar Ops</span>
-          </div>
+          <span className="text-xs font-semibold text-sidebar-primary-foreground tracking-wide">MRO Tracker</span>
         )}
       </div>
 
