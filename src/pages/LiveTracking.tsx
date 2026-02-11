@@ -258,54 +258,6 @@ export default function LiveTracking() {
                   </g>
                 </g>
 
-                {/* Tool Room - Wrench, Screwdriver, Hammer */}
-                <g transform="translate(74, 22)" opacity={0.1}>
-                  <g transform="scale(0.28)">
-                    <path d="M-8,-8 L-3,-3 L3,-3 L8,-8 L6,-10 L2,-6 L-2,-6 L-6,-10 Z" fill="hsl(var(--foreground))" />
-                    <rect x="-1.5" y="-3" width="3" height="18" rx="1" fill="hsl(var(--foreground))" />
-                    <path d="M-8,10 L-3,5 L3,5 L8,10 L6,12 L2,8 L-2,8 L-6,12 Z" fill="hsl(var(--foreground))" />
-                  </g>
-                </g>
-                <g transform="translate(82, 18)" opacity={0.08}>
-                  <g transform="scale(0.25) rotate(30)">
-                    <rect x="-1.2" y="-12" width="2.4" height="8" rx="0.5" fill="hsl(var(--foreground))" />
-                    <rect x="-2" y="-4" width="4" height="3" rx="0.8" fill="hsl(var(--foreground))" />
-                    <rect x="-1" y="-1" width="2" height="14" rx="0.5" fill="hsl(var(--foreground))" />
-                  </g>
-                </g>
-                <g transform="translate(86, 25)" opacity={0.07}>
-                  <g transform="scale(0.22) rotate(-15)">
-                    <rect x="-1" y="-2" width="2" height="16" rx="0.5" fill="hsl(var(--foreground))" />
-                    <rect x="-5" y="-6" width="10" height="5" rx="1" fill="hsl(var(--foreground))" />
-                  </g>
-                </g>
-
-                {/* Cafeteria - Coffee Cup, Fork & Knife, Plate */}
-                <g transform="translate(76, 48)" opacity={0.09}>
-                  <g transform="scale(0.3)">
-                    <rect x="-5" y="-3" width="10" height="9" rx="1.5" fill="hsl(var(--foreground))" />
-                    <path d="M5,0 Q9,0 9,3 Q9,6 5,6" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2" />
-                    <rect x="-6" y="6" width="12" height="1.5" rx="0.5" fill="hsl(var(--foreground))" />
-                    <path d="M-2,-5 Q-1,-7 0,-5 Q1,-7 2,-5" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.6" opacity="0.5" />
-                  </g>
-                </g>
-                <g transform="translate(84, 52)" opacity={0.07}>
-                  <g transform="scale(0.28)">
-                    <rect x="-4" y="-8" width="1" height="5" rx="0.3" fill="hsl(var(--foreground))" />
-                    <rect x="-2" y="-8" width="1" height="5" rx="0.3" fill="hsl(var(--foreground))" />
-                    <rect x="0" y="-8" width="1" height="5" rx="0.3" fill="hsl(var(--foreground))" />
-                    <rect x="-2" y="-3" width="1.5" height="10" rx="0.5" fill="hsl(var(--foreground))" />
-                    <path d="M5,-8 Q7,-5 7,-2 L5.5,-2 L5.5,-8 Z" fill="hsl(var(--foreground))" />
-                    <rect x="5" y="-2" width="1.2" height="10" rx="0.4" fill="hsl(var(--foreground))" />
-                  </g>
-                </g>
-                <g transform="translate(90, 45)" opacity={0.06}>
-                  <g transform="scale(0.25)">
-                    <ellipse cx="0" cy="0" rx="8" ry="6" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1" />
-                    <ellipse cx="0" cy="0" rx="5" ry="3.5" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.6" />
-                  </g>
-                </g>
-
                 {/* Technician dots */}
                 {techDots.map((dot, i) => {
                   const isSelected = selectedTech?.tech.id === dot.tech.id;
