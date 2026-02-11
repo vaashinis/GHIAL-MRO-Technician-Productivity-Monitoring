@@ -180,24 +180,81 @@ export default function LiveTracking() {
                   </g>
                 ))}
 
-                {/* Aircraft silhouette - centered in grid */}
-                <g transform="translate(50, 28)" opacity={0.13}>
-                  <g transform="scale(0.22)">
+                {/* Aircraft silhouettes in Hangar */}
+                {/* Aircraft 1 - Bay A area */}
+                <g transform="translate(18, 28)" opacity={0.1}>
+                  <g transform="scale(0.12)">
                     {/* Fuselage */}
-                    <ellipse cx="0" cy="0" rx="65" ry="9" fill="hsl(var(--foreground))" />
+                    <ellipse cx="0" cy="0" rx="60" ry="8" fill="hsl(var(--foreground))" />
                     {/* Nose */}
-                    <path d="M-65,0 Q-82,-3 -82,0 Q-82,3 -65,0" fill="hsl(var(--foreground))" />
+                    <path d="M-60,0 Q-75,-2 -75,0 Q-75,2 -60,0" fill="hsl(var(--foreground))" />
                     {/* Wings */}
-                    <path d="M-5,-9 L18,-52 L30,-52 L12,-9" fill="hsl(var(--foreground))" />
-                    <path d="M-5,9 L18,52 L30,52 L12,9" fill="hsl(var(--foreground))" />
+                    <path d="M-5,-8 L15,-45 L25,-45 L10,-8" fill="hsl(var(--foreground))" />
+                    <path d="M-5,8 L15,45 L25,45 L10,8" fill="hsl(var(--foreground))" />
                     {/* Tail */}
-                    <path d="M52,-9 L64,-25 L70,-25 L62,-9" fill="hsl(var(--foreground))" />
-                    <path d="M52,9 L64,25 L70,25 L62,9" fill="hsl(var(--foreground))" />
+                    <path d="M50,-8 L60,-22 L65,-22 L58,-8" fill="hsl(var(--foreground))" />
+                    <path d="M50,8 L60,22 L65,22 L58,8" fill="hsl(var(--foreground))" />
                     {/* Vertical stabilizer */}
-                    <path d="M58,-9 L67,-22 L72,-18 L64,-9" fill="hsl(var(--foreground))" />
+                    <path d="M55,-8 L62,-18 L65,-15 L60,-8" fill="hsl(var(--foreground))" />
                     {/* Engines */}
-                    <ellipse cx="6" cy="-24" rx="9" ry="3.5" fill="hsl(var(--foreground))" />
-                    <ellipse cx="6" cy="24" rx="9" ry="3.5" fill="hsl(var(--foreground))" />
+                    <ellipse cx="5" cy="-20" rx="8" ry="3" fill="hsl(var(--foreground))" />
+                    <ellipse cx="5" cy="20" rx="8" ry="3" fill="hsl(var(--foreground))" />
+                  </g>
+                </g>
+
+                {/* Aircraft 2 - Bay B area */}
+                <g transform="translate(42, 35)" opacity={0.08}>
+                  <g transform="scale(0.1) rotate(-10)">
+                    <ellipse cx="0" cy="0" rx="55" ry="7" fill="hsl(var(--foreground))" />
+                    <path d="M-55,0 Q-68,-2 -68,0 Q-68,2 -55,0" fill="hsl(var(--foreground))" />
+                    <path d="M-5,-7 L12,-40 L22,-40 L8,-7" fill="hsl(var(--foreground))" />
+                    <path d="M-5,7 L12,40 L22,40 L8,7" fill="hsl(var(--foreground))" />
+                    <path d="M45,-7 L55,-20 L60,-20 L52,-7" fill="hsl(var(--foreground))" />
+                    <path d="M45,7 L55,20 L60,20 L52,7" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="-18" rx="7" ry="2.5" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="18" rx="7" ry="2.5" fill="hsl(var(--foreground))" />
+                  </g>
+                </g>
+
+                {/* Aircraft 3 - Avionics Bay C (smaller aircraft) */}
+                <g transform="translate(20, 82)" opacity={0.09}>
+                  <g transform="scale(0.08) rotate(5)">
+                    <ellipse cx="0" cy="0" rx="48" ry="6" fill="hsl(var(--foreground))" />
+                    <path d="M-48,0 Q-58,-1.5 -58,0 Q-58,1.5 -48,0" fill="hsl(var(--foreground))" />
+                    <path d="M-3,-6 L10,-32 L18,-32 L8,-6" fill="hsl(var(--foreground))" />
+                    <path d="M-3,6 L10,32 L18,32 L8,6" fill="hsl(var(--foreground))" />
+                    <path d="M40,-6 L48,-16 L52,-16 L46,-6" fill="hsl(var(--foreground))" />
+                    <path d="M40,6 L48,16 L52,16 L46,6" fill="hsl(var(--foreground))" />
+                    <ellipse cx="2" cy="-14" rx="6" ry="2" fill="hsl(var(--foreground))" />
+                    <ellipse cx="2" cy="14" rx="6" ry="2" fill="hsl(var(--foreground))" />
+                  </g>
+                </g>
+
+                {/* Aircraft 4 - Bay D area (top-right of hangar) */}
+                <g transform="translate(48, 18)" opacity={0.09}>
+                  <g transform="scale(0.09) rotate(15)">
+                    <ellipse cx="0" cy="0" rx="52" ry="7" fill="hsl(var(--foreground))" />
+                    <path d="M-52,0 Q-64,-2 -64,0 Q-64,2 -52,0" fill="hsl(var(--foreground))" />
+                    <path d="M-4,-7 L12,-38 L20,-38 L8,-7" fill="hsl(var(--foreground))" />
+                    <path d="M-4,7 L12,38 L20,38 L8,7" fill="hsl(var(--foreground))" />
+                    <path d="M42,-7 L52,-18 L56,-18 L48,-7" fill="hsl(var(--foreground))" />
+                    <path d="M42,7 L52,18 L56,18 L48,7" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="-16" rx="6" ry="2.5" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="16" rx="6" ry="2.5" fill="hsl(var(--foreground))" />
+                  </g>
+                </g>
+
+                {/* Aircraft 5 - center-left of hangar */}
+                <g transform="translate(25, 48)" opacity={0.07}>
+                  <g transform="scale(0.1) rotate(-5)">
+                    <ellipse cx="0" cy="0" rx="50" ry="6.5" fill="hsl(var(--foreground))" />
+                    <path d="M-50,0 Q-62,-1.5 -62,0 Q-62,1.5 -50,0" fill="hsl(var(--foreground))" />
+                    <path d="M-4,-6.5 L13,-36 L21,-36 L9,-6.5" fill="hsl(var(--foreground))" />
+                    <path d="M-4,6.5 L13,36 L21,36 L9,6.5" fill="hsl(var(--foreground))" />
+                    <path d="M42,-6.5 L50,-17 L54,-17 L47,-6.5" fill="hsl(var(--foreground))" />
+                    <path d="M42,6.5 L50,17 L54,17 L47,6.5" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="-15" rx="6.5" ry="2.5" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="15" rx="6.5" ry="2.5" fill="hsl(var(--foreground))" />
                   </g>
                 </g>
 
