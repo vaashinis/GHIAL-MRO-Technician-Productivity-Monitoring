@@ -4,8 +4,10 @@ import { technicians } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Plus, Filter } from "lucide-react";
+import { Search, Plus, Filter, Clock, MapPin, Coffee, Car, Plane } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Progress } from "@/components/ui/progress";
 
 const skillColor = (skill: string) => {
   if (skill === "Engine") return "zone-blue";
@@ -18,6 +20,19 @@ export default function TechnicianManagement() {
   const [search, setSearch] = useState("");
   const [shiftFilter, setShiftFilter] = useState("all");
   const [skillFilter, setSkillFilter] = useState("all");
+  const [selectedTech, setSelectedTech] = useState<typeof technicians[0] | null>(null);
+
+  // Generate mock zone time data for a technician
+  const getZoneData = (techName: string) => {
+    const seed = techName.length;
+    const utilization = 70 + (seed * 3) % 25;
+    const hangarH = 3 + (seed % 3);
+    const hangarM = 5 + (seed * 7) % 55;
+    const toolM = 30 + (seed * 11) % 40;
+    const cafeM = 15 + (seed * 5) % 25;
+    const parkM = 10 + (seed * 3) % 20;
+    return { utilization, hangarH, hangarM, toolM, cafeM, parkM };
+  };
 
   const filtered = technicians.filter((t) => {
     const matchesSearch = t.name.toLowerCase().includes(search.toLowerCase()) || t.id.toLowerCase().includes(search.toLowerCase()) || t.badgeId.toLowerCase().includes(search.toLowerCase());
@@ -106,7 +121,14 @@ export default function TechnicianManagement() {
                 return (
                   <tr key={tech.id} className="hover:bg-muted/30 transition-colors">
                     <td className="mono text-xs font-medium">{tech.id}</td>
-                    <td className="font-medium text-sm">{tech.name}</td>
+                    <td className="font-medium text-sm">
+                      <button
+                        onClick={() => setSelectedTech(tech)}
+                        className="text-primary hover:underline cursor-pointer bg-transparent border-none p-0 font-medium text-sm text-left"
+                      >
+                        {tech.name}
+                      </button>
+                    </td>
                     <td className="mono text-xs">{tech.badgeId}</td>
                     <td className="text-xs">{tech.role}</td>
                     <td><Badge variant="outline" className="text-[10px]">{tech.shift}</Badge></td>
@@ -125,6 +147,64 @@ export default function TechnicianManagement() {
             </tbody>
           </table>
         </div>
+
+        {/* Technician Detail Popup */}
+        <Dialog open={!!selectedTech} onOpenChange={(open) => !open && setSelectedTech(null)}>
+          <DialogContent className="sm:max-w-md">
+            {selectedTech && (() => {
+              const zone = getZoneData(selectedTech.name);
+              return (
+                <>
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2 text-lg">
+                      <span className={`h-2.5 w-2.5 rounded-full ${selectedTech.status === "Active" ? "bg-success" : selectedTech.status === "Off-Shift" ? "bg-muted-foreground/40" : "bg-warning"}`} />
+                      {selectedTech.name}
+                    </DialogTitle>
+                    <p className="text-xs text-muted-foreground">{selectedTech.id} · {selectedTech.role} · {selectedTech.shift} Shift</p>
+                  </DialogHeader>
+
+                  <div className="space-y-5 pt-2">
+                    {/* Shift Utilization */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium flex items-center gap-2">
+                          <Clock className="h-4 w-4 text-primary" />
+                          Shift Utilization
+                        </span>
+                        <span className="text-lg font-bold text-primary">{zone.utilization}%</span>
+                      </div>
+                      <Progress value={zone.utilization} className="h-2" />
+                    </div>
+
+                    {/* Zone Breakdown */}
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                        <Plane className="h-4 w-4 text-blue-500" />
+                        <span className="text-sm flex-1">Hangar</span>
+                        <span className="text-sm font-semibold">{zone.hangarH}h {zone.hangarM}m</span>
+                      </div>
+                      <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                        <MapPin className="h-4 w-4 text-emerald-500" />
+                        <span className="text-sm flex-1">Tool Room</span>
+                        <span className="text-sm font-semibold">{zone.toolM}m</span>
+                      </div>
+                      <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                        <Coffee className="h-4 w-4 text-amber-500" />
+                        <span className="text-sm flex-1">Cafeteria</span>
+                        <span className="text-sm font-semibold">{zone.cafeM}m</span>
+                      </div>
+                      <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                        <Car className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-sm flex-1">Parking</span>
+                        <span className="text-sm font-semibold">{zone.parkM}m</span>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              );
+            })()}
+          </DialogContent>
+        </Dialog>
       </div>
     </Layout>
   );
