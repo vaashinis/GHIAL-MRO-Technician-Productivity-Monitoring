@@ -88,6 +88,8 @@ export const technicians: Technician[] = [
   { id: "T010", name: "Kevin O'Brien", badgeId: "BLE-4410", role: "Mechanic", shift: "Morning", skill: "General", zone: "Bay A - Heavy Check", status: "Break", certExpiry: "2026-05-30", checkIn: "06:00", checkOut: undefined },
   { id: "T011", name: "Anna Petrov", badgeId: "BLE-4411", role: "Inspector", shift: "Afternoon", skill: "General", zone: "QC Office", status: "Off-Shift", certExpiry: "2026-10-12", checkIn: undefined, checkOut: undefined },
   { id: "T012", name: "Carlos Rivera", badgeId: "BLE-4412", role: "Mechanic", shift: "Morning", skill: "Structure", zone: "Bay A - Heavy Check", status: "Active", certExpiry: "2026-02-28", aircraft: "B777-300 (VT-ALJ)", checkIn: "06:02", checkOut: undefined },
+  { id: "T013", name: "Ravi Patel", badgeId: "BLE-4413", role: "Mechanic", shift: "Morning", skill: "General", zone: "Tool Crib", status: "Active", certExpiry: "2026-07-20", checkIn: "06:10", checkOut: undefined },
+  { id: "T014", name: "Nina Gupta", badgeId: "BLE-4414", role: "Structure Tech", shift: "Morning", skill: "Structure", zone: "Tool Crib", status: "Active", certExpiry: "2026-09-05", checkIn: "06:12", checkOut: undefined },
 ];
 
 export const alerts: Alert[] = [
