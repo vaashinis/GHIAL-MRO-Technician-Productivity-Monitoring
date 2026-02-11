@@ -230,6 +230,34 @@ export default function LiveTracking() {
                   </g>
                 </g>
 
+                {/* Aircraft 4 - Bay D area (top-right of hangar) */}
+                <g transform="translate(48, 18)" opacity={0.09}>
+                  <g transform="scale(0.09) rotate(15)">
+                    <ellipse cx="0" cy="0" rx="52" ry="7" fill="hsl(var(--foreground))" />
+                    <path d="M-52,0 Q-64,-2 -64,0 Q-64,2 -52,0" fill="hsl(var(--foreground))" />
+                    <path d="M-4,-7 L12,-38 L20,-38 L8,-7" fill="hsl(var(--foreground))" />
+                    <path d="M-4,7 L12,38 L20,38 L8,7" fill="hsl(var(--foreground))" />
+                    <path d="M42,-7 L52,-18 L56,-18 L48,-7" fill="hsl(var(--foreground))" />
+                    <path d="M42,7 L52,18 L56,18 L48,7" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="-16" rx="6" ry="2.5" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="16" rx="6" ry="2.5" fill="hsl(var(--foreground))" />
+                  </g>
+                </g>
+
+                {/* Aircraft 5 - center-left of hangar */}
+                <g transform="translate(25, 48)" opacity={0.07}>
+                  <g transform="scale(0.1) rotate(-5)">
+                    <ellipse cx="0" cy="0" rx="50" ry="6.5" fill="hsl(var(--foreground))" />
+                    <path d="M-50,0 Q-62,-1.5 -62,0 Q-62,1.5 -50,0" fill="hsl(var(--foreground))" />
+                    <path d="M-4,-6.5 L13,-36 L21,-36 L9,-6.5" fill="hsl(var(--foreground))" />
+                    <path d="M-4,6.5 L13,36 L21,36 L9,6.5" fill="hsl(var(--foreground))" />
+                    <path d="M42,-6.5 L50,-17 L54,-17 L47,-6.5" fill="hsl(var(--foreground))" />
+                    <path d="M42,6.5 L50,17 L54,17 L47,6.5" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="-15" rx="6.5" ry="2.5" fill="hsl(var(--foreground))" />
+                    <ellipse cx="3" cy="15" rx="6.5" ry="2.5" fill="hsl(var(--foreground))" />
+                  </g>
+                </g>
+
                 {/* Technician dots */}
                 {techDots.map((dot, i) => {
                   const isSelected = selectedTech?.tech.id === dot.tech.id;
