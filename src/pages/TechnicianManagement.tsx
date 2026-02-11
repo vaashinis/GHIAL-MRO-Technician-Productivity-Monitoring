@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
-import { technicians } from "@/data/mockData";
+import { technicians as initialTechnicians } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Plus, Filter, Clock, MapPin, Coffee, Car, Plane } from "lucide-react";
+import { Search, Plus, Clock, MapPin, Coffee, Car, Plane } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
+import { Label } from "@/components/ui/label";
 
 const skillColor = (skill: string) => {
   if (skill === "Engine") return "zone-blue";
@@ -16,11 +17,16 @@ const skillColor = (skill: string) => {
   return "zone-badge bg-muted text-muted-foreground";
 };
 
+const emptyForm = { name: "", id: "", badgeId: "", role: "", shift: "", skill: "" };
+
 export default function TechnicianManagement() {
+  const [techList, setTechList] = useState(initialTechnicians);
   const [search, setSearch] = useState("");
   const [shiftFilter, setShiftFilter] = useState("all");
   const [skillFilter, setSkillFilter] = useState("all");
-  const [selectedTech, setSelectedTech] = useState<typeof technicians[0] | null>(null);
+  const [selectedTech, setSelectedTech] = useState<typeof initialTechnicians[0] | null>(null);
+  const [addOpen, setAddOpen] = useState(false);
+  const [form, setForm] = useState(emptyForm);
 
   // Generate mock zone time data for a technician
   const getZoneData = (techName: string) => {
@@ -34,7 +40,22 @@ export default function TechnicianManagement() {
     return { utilization, hangarH, hangarM, toolM, cafeM, parkM };
   };
 
-  const filtered = technicians.filter((t) => {
+  const handleAddTechnician = () => {
+    if (!form.name || !form.id) return;
+    const newTech = {
+      ...form,
+      badgeId: form.badgeId || `BDG-${form.id}`,
+      status: "Active" as const,
+      zone: "Bay A",
+      aircraft: "",
+      certExpiry: "2026-12-31",
+    };
+    setTechList((prev) => [...prev, newTech as typeof prev[0]]);
+    setForm(emptyForm);
+    setAddOpen(false);
+  };
+
+  const filtered = techList.filter((t) => {
     const matchesSearch = t.name.toLowerCase().includes(search.toLowerCase()) || t.id.toLowerCase().includes(search.toLowerCase()) || t.badgeId.toLowerCase().includes(search.toLowerCase());
     const matchesShift = shiftFilter === "all" || t.shift === shiftFilter;
     const matchesSkill = skillFilter === "all" || t.skill === skillFilter;
@@ -56,9 +77,9 @@ export default function TechnicianManagement() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold">Technician Management</h1>
-            <p className="text-sm text-muted-foreground">{technicians.length} registered technicians</p>
+            <p className="text-sm text-muted-foreground">{techList.length} registered technicians</p>
           </div>
-          <Button size="sm">
+          <Button size="sm" onClick={() => setAddOpen(true)}>
             <Plus className="h-4 w-4 mr-1" /> Add Technician
           </Button>
         </div>
@@ -203,6 +224,73 @@ export default function TechnicianManagement() {
                 </>
               );
             })()}
+          </DialogContent>
+        </Dialog>
+
+        {/* Add Technician Dialog */}
+        <Dialog open={addOpen} onOpenChange={setAddOpen}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>Add New Technician</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4 pt-2">
+              <div className="space-y-2">
+                <Label htmlFor="tech-name">Name</Label>
+                <Input id="tech-name" placeholder="Full name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="tech-id">Technician ID</Label>
+                  <Input id="tech-id" placeholder="e.g. TECH-021" value={form.id} onChange={(e) => setForm({ ...form, id: e.target.value })} />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="tech-badge">Badge ID</Label>
+                  <Input id="tech-badge" placeholder="e.g. BDG-021" value={form.badgeId} onChange={(e) => setForm({ ...form, badgeId: e.target.value })} />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label>Role</Label>
+                <Select value={form.role} onValueChange={(v) => setForm({ ...form, role: v })}>
+                  <SelectTrigger><SelectValue placeholder="Select role" /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Lead Technician">Lead Technician</SelectItem>
+                    <SelectItem value="Senior Technician">Senior Technician</SelectItem>
+                    <SelectItem value="Technician">Technician</SelectItem>
+                    <SelectItem value="Junior Technician">Junior Technician</SelectItem>
+                    <SelectItem value="Apprentice">Apprentice</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>Shift</Label>
+                  <Select value={form.shift} onValueChange={(v) => setForm({ ...form, shift: v })}>
+                    <SelectTrigger><SelectValue placeholder="Select shift" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Morning">Morning</SelectItem>
+                      <SelectItem value="Afternoon">Afternoon</SelectItem>
+                      <SelectItem value="Night">Night</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label>Skill</Label>
+                  <Select value={form.skill} onValueChange={(v) => setForm({ ...form, skill: v })}>
+                    <SelectTrigger><SelectValue placeholder="Select skill" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Engine">Engine</SelectItem>
+                      <SelectItem value="Avionics">Avionics</SelectItem>
+                      <SelectItem value="Structure">Structure</SelectItem>
+                      <SelectItem value="General">General</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </div>
+            <DialogFooter className="pt-4">
+              <Button variant="outline" onClick={() => { setForm(emptyForm); setAddOpen(false); }}>Cancel</Button>
+              <Button onClick={handleAddTechnician} disabled={!form.name || !form.id}>Add Technician</Button>
+            </DialogFooter>
           </DialogContent>
         </Dialog>
       </div>
