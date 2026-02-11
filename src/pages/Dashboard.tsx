@@ -12,7 +12,7 @@ const activeAircraft = [...new Set(technicians.filter((t) => t.aircraft).map((t)
 const unacknowledgedAlerts = alerts.filter((a) => !a.acknowledged).length;
 
 const zoneStatusColor = (status: string) => {
-  if (status === "critical") return "zone-red";
+  if (status === "critical") return "zone-amber";
   if (status === "warning") return "zone-amber";
   return "zone-green";
 };
@@ -57,14 +57,14 @@ export default function Dashboard() {
                   key={zone.id}
                   className={`rounded-lg border-2 p-4 transition-all hover:shadow-md cursor-pointer ${
                     zone.status === "critical"
-                      ? "border-destructive/50 bg-destructive/5"
+                      ? "border-warning/50 bg-warning/5"
                       : zone.status === "warning"
                       ? "border-warning/50 bg-warning/5"
                       : "border-border bg-muted/30"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className={`zone-badge ${zoneStatusColor(zone.status)}`}>{zone.status}</span>
+                    <span className={`zone-badge ${zoneStatusColor(zone.status)}`}>{zone.status === "critical" ? "warning" : zone.status}</span>
                   </div>
                   <p className="text-sm font-semibold truncate">{zone.name}</p>
                   <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{zone.type}</p>
