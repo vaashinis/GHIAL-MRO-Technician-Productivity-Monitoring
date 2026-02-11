@@ -39,7 +39,7 @@ export default function Dashboard() {
           <StatCard title="Active Technicians" value="79/100" subtitle="On current shift" icon={Users} variant="accent" trend={{ value: "2 more than yesterday", positive: true }} />
           <StatCard title="Technician Productivity Utilization" value={`${utilization}%`} subtitle="Target: 85%" icon={Activity} variant="success" trend={{ value: "3% vs last week", positive: true }} />
           <StatCard title="Active Aircraft" value={activeAircraft} subtitle="Under maintenance" icon={Plane} variant="default" />
-          <StatCard title="Open Alerts" value={unacknowledgedAlerts} subtitle={`${alerts.length} total today`} icon={AlertTriangle} variant={unacknowledgedAlerts > 2 ? "destructive" : "warning"} />
+          
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -93,25 +93,6 @@ export default function Dashboard() {
 
           {/* Side Panel */}
           <div className="space-y-6">
-            {/* Alerts */}
-            <div className="bg-card rounded-lg border p-5">
-              <div className="flex items-center justify-between mb-3">
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Active Alerts</h2>
-                <Badge variant="destructive" className="text-[10px]">{unacknowledgedAlerts}</Badge>
-              </div>
-              <div className="space-y-2">
-                {alerts.filter((a) => !a.acknowledged).slice(0, 4).map((alert) => (
-                  <div key={alert.id} className="flex items-start gap-3 p-2.5 rounded-md bg-muted/40 border border-border/50">
-                    <div className={`pulse-dot mt-1 shrink-0 ${alert.severity === "high" ? "bg-destructive" : "bg-warning"}`} />
-                    <div className="min-w-0">
-                      <p className="text-xs leading-relaxed">{alert.message}</p>
-                      <p className="text-[10px] text-muted-foreground mt-1 mono">{alert.time}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Activity Feed */}
             <div className="bg-card rounded-lg border p-5">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">Recent Activity</h2>
