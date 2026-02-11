@@ -42,6 +42,33 @@ export default function Dashboard() {
           <StatCard title="Open Alerts" value={unacknowledgedAlerts} subtitle={`${alerts.length} total today`} icon={AlertTriangle} variant={unacknowledgedAlerts > 2 ? "destructive" : "warning"} />
         </div>
 
+        {/* Technician Productivity Utilization */}
+        <div className="bg-card rounded-lg border p-5">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Technician Productivity Utilization</h2>
+            <span className="text-xs text-muted-foreground">Current Shift</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {technicians.filter(t => t.status !== "Off-Shift").map((tech) => {
+              const prodUtil = tech.status === "Active" ? Math.floor(Math.random() * 20 + 75) : tech.status === "Idle" ? Math.floor(Math.random() * 20 + 20) : Math.floor(Math.random() * 20 + 40);
+              return (
+                <div key={tech.id} className="flex items-center gap-3 p-3 rounded-md bg-muted/30 border border-border/50">
+                  <div className={`h-2 w-2 rounded-full shrink-0 ${tech.status === "Active" ? "bg-success" : tech.status === "Idle" ? "bg-warning" : "bg-muted-foreground/40"}`} />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-xs font-medium truncate">{tech.name}</p>
+                      <span className={`text-xs font-bold ${prodUtil >= 75 ? "text-success" : prodUtil >= 50 ? "text-warning" : "text-destructive"}`}>{prodUtil}%</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
+                      <div className={`h-full rounded-full transition-all ${prodUtil >= 75 ? "bg-success" : prodUtil >= 50 ? "bg-warning" : "bg-destructive"}`} style={{ width: `${prodUtil}%` }} />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Hangar Map */}
           <div className="lg:col-span-2 bg-card rounded-lg border p-5">
