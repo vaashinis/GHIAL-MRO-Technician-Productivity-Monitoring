@@ -18,7 +18,7 @@ export function Layout({ children }: LayoutProps) {
               <SidebarTrigger />
               <div className="h-5 w-px bg-border" />
               <span className="text-xs text-muted-foreground mono uppercase tracking-wider">
-                Hangar 3 — Mumbai MRO Facility
+                Hangar 3 — Hyderabad MRO Facility
               </span>
             </div>
             <div className="flex items-center gap-4">
