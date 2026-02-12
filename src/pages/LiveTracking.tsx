@@ -181,14 +181,10 @@ export default function LiveTracking() {
                   </g>
                 ))}
 
-                {/* Real aircraft image - animated, vertical, centered in hangar */}
+                {/* Real aircraft image - static, vertical, centered in hangar */}
                 <g>
-                  <animateTransform attributeName="transform" type="translate" values="0,0; 0,-1.5; 0,0" dur="3s" repeatCount="indefinite" />
                   {/* Shadow */}
-                  <ellipse cx="32.5" cy="42" rx="8" ry="1.5" fill="hsl(var(--foreground))" opacity={0.08}>
-                    <animate attributeName="opacity" values="0.08;0.04;0.08" dur="3s" repeatCount="indefinite" />
-                    <animate attributeName="ry" values="1.5;2;1.5" dur="3s" repeatCount="indefinite" />
-                  </ellipse>
+                  <ellipse cx="32.5" cy="42" rx="8" ry="1.5" fill="hsl(var(--foreground))" opacity={0.08} />
                   {/* Aircraft image */}
                   <image
                     href={aircraftImg}
