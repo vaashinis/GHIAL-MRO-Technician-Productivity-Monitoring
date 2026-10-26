@@ -1,73 +1,158 @@
-# Welcome to your Lovable project
+# GHIAL MRO Technician Productivity Monitoring
 
-## Project info
+Prompt:
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Create a professional internal web application UI for an Aviation MRO Technician Productivity Tracking System that uses BLE-based tracking to monitor technician movement and productivity inside aircraft hangars.
 
-## How can I edit this code?
+This is a functional tracking application used by MRO management, not a marketing website.
 
-There are several ways of editing your application.
+The UI should be clean, enterprise-style, and optimized for operations dashboards. Use aviation theme colors (blue, grey, white).
 
-**Use Lovable**
+Include the following modules and screens:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+🔷 Login & Access Control
 
-Changes made via Lovable will be committed automatically to this repo.
+Secure login screen
 
-**Use your preferred IDE**
+Single Sign-On (SSO) option
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Role-based access:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Admin
 
-Follow these steps:
+MRO Manager
+
+Supervisor
+
+Audit logs for user actions
+
+🔷 Main Dashboard (Home Screen)
+
+Top Summary Panel:
+
+Total technicians active
+
+Utilization %
+
+Active aircraft count
+
+Alerts summary
+
+Main View:
+
+Live hangar map with zones
+
+Technician distribution by zone
+
+Color-coded zones
+
+Side Panel:
+
+Alerts
+
+Recent activity feed
+
+🔷 Live Tracking Screen
+
+Real-time monitoring:
+
+Current technician location by zone
+
+Active vs idle technicians
+
+Staff count per zone
+
+Live counters updating automatically
+
+🔷 Technician Management Screen
+
+Technician profile management:
+
+Name
+
+ID
+
+Role
+
+Shift
+
+Badge ID mapping
+
+Skill category (engine, avionics, structure)
+
+Features:
+
+Assign technician to aircraft/project
+
+Track certification validity dates
+
+🔷 Productivity Analytics Screen
+
+Show charts and reports for:
+
+Time spent per zone
+
+Productive vs non-productive time
+
+Shift efficiency
+
+Technician utilization %
+
+Aircraft-wise labor effort
+
+Include filters:
+
+Date
+
+Shift
+
+Aircraft
+
+Zone
+
+🔷 Entry & Exit Logs Screen
+
+Digital attendance and movement logs:
+
+Check-in/out times
+
+Zone entry history
+
+Shift duration tracking
+
+Search and filter options included.
+
+🔷 Alerts & Notifications
+
+Idle technician alerts
+
+Restricted zone alerts
+
+Badge offline alerts
+
+Overcrowded zone alerts
+
+Design the application as a real operational tool used by airport MRO teams daily. Focus on usability, clear dashboards, and data visualization rather than marketing content.
+
+This will generate something closer to a real SaaS dashboard app.
+
+This project was built with [Lovable](https://lovable.dev).
+
+## Build with Lovable
+
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/692f05b3-9870-4619-abc5-56507d789fa2).
+
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+
+## Development
+
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+git clone <this-repository-url>
+cd <repository-name>
 npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
